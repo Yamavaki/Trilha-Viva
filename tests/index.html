@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Teste Trilha Viva</title>
+<link rel="stylesheet" href="/styles/trilha-viva.css">
+<style>
+  body { margin: 0; background: #0b0612; width: 2000px; height: 1500px; font-family: sans-serif; }
+</style>
+<script src="/tests/stub.js"></script>
+</head>
+<body>
+<script type="module">
+  const chefe = __criarPlaylist({
+    name: "Chefes",
+    sounds: [
+      { name: "Tema do Guardião da Torre", path: "/tests/audio/chefe.ogg", flags: { "trilha-viva": { secoes: [
+        { id: "s1", nome: "Introdução", inicio: 0, termino: 4, acao: "next", cor: "#6f9be0" },
+        { id: "s2", nome: "Fase 1", inicio: 4, termino: 14, acao: "loop", cor: "#d9b44a" },
+        { id: "s3", nome: "Transição", inicio: 14, termino: 18, acao: "next", cor: "#b48ce6" },
+        { id: "s4", nome: "Fase final", inicio: 18, termino: 30, acao: "loop", cor: "#e0866a" },
+        { id: "s5", nome: "Encerramento", inicio: 30, termino: 36.0065, acao: "stop", cor: "#5fb3a8" }
+      ] } } },
+      { name: "Marcha das Tintas", path: "/tests/audio/marcha.ogg", repeat: true },
+      { name: "Coro das Auroras", path: "/tests/audio/coro.ogg" }
+    ]
+  });
+  __criarPlaylist({ name: "Ambientes", sounds: [{ name: "Chuva constante na floresta", path: "/tests/audio/chuva.ogg", repeat: true, flags: { "trilha-viva": { tipo: "ambiente" } } }] });
+  __criarPlaylist({ name: "Exploração", sounds: [] });
+  window.__playlistChefe = chefe;
+  await import("/scripts/main.mjs");
+  Hooks.callAll("init");
+  Hooks.callAll("ready");
+  const est = await import("/scripts/estado.mjs");
+  window.__est = est;
+  if (location.search.includes("jogador")) __pedirEstado();
+  window.__pronto = true;
+</script>
+</body>
+</html>

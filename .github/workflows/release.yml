@@ -1,0 +1,23 @@
+# Cria a release com module.json e trilha-viva.zip sempre que uma etiqueta v* é enviada.
+name: Release
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Montar o pacote do módulo
+        run: zip -r trilha-viva.zip module.json README.md scripts styles
+      - uses: softprops/action-gh-release@v2
+        with:
+          name: Trilha Viva ${{ github.ref_name }}
+          body: |
+            Instale pelo manifesto no Foundry:
+            https://github.com/Yamavaki/Trilha-Viva/releases/latest/download/module.json
+          files: |
+            module.json
+            trilha-viva.zip

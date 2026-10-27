@@ -12,12 +12,12 @@ Módulo para Foundry V13/V14. Usa as playlists que já existem no mundo e acresc
 No Foundry (ou na Forge), em **Instalar Módulo**, cole este link no campo *URL do Manifesto*:
 
 ```
-https://github.com/Yamavaki/Trilha-Viva/releases/latest/download/module.json
+https://raw.githubusercontent.com/Yamavaki/Trilha-Viva/main/module.json
 ```
 
 Depois, ative **Trilha Viva** em *Gerenciar Módulos*. Atualizações aparecem sozinhas pelo mesmo link.
 
-Para instalar à mão, baixe `trilha-viva.zip` na página de [Releases](https://github.com/Yamavaki/Trilha-Viva/releases) e extraia em `Data/modules/trilha-viva/`.
+Para instalar à mão, baixe [`dist/trilha-viva.zip`](https://raw.githubusercontent.com/Yamavaki/Trilha-Viva/main/dist/trilha-viva.zip) e extraia em `Data/modules/trilha-viva/`.
 
 ## Abrir
 

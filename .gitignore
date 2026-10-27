@@ -3,3 +3,4 @@ __pycache__/
 prints/
 tests/prints/
 *.zip
+!dist/trilha-viva.zip
